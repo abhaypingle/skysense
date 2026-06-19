@@ -91,18 +91,18 @@ export default function AuthPage() {
               className="input"
               type="text"
               inputMode="numeric"
-              maxLength={6}
-              placeholder="000000"
+              maxLength={10}
+              placeholder="Enter code"
               value={otp}
               onChange={e => setOtp(e.target.value.replace(/\D/g,''))}
               onKeyDown={e => e.key==='Enter' && handleVerify()}
-              style={{textAlign:'center',fontSize:'24px',letterSpacing:'8px',fontWeight:600}}
+              style={{textAlign:'center',fontSize:'24px',letterSpacing:"6px",fontWeight:600}}
             />
 
             {error && <ErrorBox text={error} />}
             {info && !error && <InfoBox text={info} />}
 
-            <button className="btn btn-primary" onClick={handleVerify} disabled={loading || otp.length !== 6}
+            <button className="btn btn-primary" onClick={handleVerify} disabled={loading || otp.length < 4}
               style={{width:'100%',justifyContent:'center',padding:'11px',fontSize:'14px',marginTop:'4px'}}>
               {loading ? <><div className="spinner" /> Verifying...</> : 'Verify & continue'}
             </button>
